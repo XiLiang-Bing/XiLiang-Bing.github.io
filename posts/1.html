@@ -43,6 +43,24 @@
             </div>
             
             <div class="post">
+                <h3 class="post-header"><a href="/2017/11/10/git-lf-crlf.html">git 出现：warning: LF will be replaced by CRLF 的解决办法</a></h3>
+                <div class="post-meta">
+                    <small>2017-11-10</small>
+                </div>
+                <div class="post-description"><h4 id="介绍">介绍</h4>
+
+<p>Windows 环境下使用 git add 的时候，有时会遇到 warning: “warning:LF will be replacee by CRLF” 提示。这是由于在 Windows 中的换行符为 CRLF，而在 Linux 中的换行符为 LF。在 git 创建的项目中换行符为 LF，而执行 git add 时，系统会提示 LF 将被转换为 CRLF。</p>
+
+<p>这种问题的解决的办法很简单，在终端执行如下命令禁止 git 自动转换即可。</p>
+<pre><code class="language-shell">git config --global core.autocrlf false
+</code></pre>
+</div>
+                <div class="more">
+                    <a href="/2017/11/10/git-lf-crlf.html" class="btn pure-button pure-button-primary">继续阅读..</a>
+                </div>
+            </div>
+            
+            <div class="post">
                 <h3 class="post-header"><a href="/2017/11/8/git-project.html">Git https、http 方式设置记住用户名及密码</a></h3>
                 <div class="post-meta">
                     <small>2017-11-8</small>
@@ -244,66 +262,6 @@ func main() {
 </div>
                 <div class="more">
                     <a href="/2017/11/6/golang-recursive.html" class="btn pure-button pure-button-primary">继续阅读..</a>
-                </div>
-            </div>
-            
-            <div class="post">
-                <h3 class="post-header"><a href="/2017/10/18/welcome.html">Hello Pugo!</a></h3>
-                <div class="post-meta">
-                    <small>2017-10-18</small>
-                </div>
-                <div class="post-description"><h4 id="介绍">介绍</h4>
-
-<p>当您阅读本文时，表明<code>PuGo</code>已成功运行。</p>
-
-<p>此文章是从 <code>source/welcome.md</code> 生成的。 您可以学习它，并尝试编写自己的文章。</p>
-
-<p>文章的信息，如标题，作者等，都由<code>Markdown</code>中的<code>toml</code>代码块定义.</p>
-<pre><code class="language-toml"># 文章标题(必填)
-title = &quot;Welcome&quot;
-
-# 文章标签
-# 用于建立永久链接(必填).
-slug = &quot;welcome&quot;
-
-# 文章描述
-# 显示在 HTML 头部的 meta 标签中.
-desc = &quot;welcome to try pugo site generator&quot;
-
-# 文章发布时间
-# 格式: 2015-11-28, 2015-11-28 12:28, 2015-11-28 12:28:38
-date = &quot;2017-10-18 22:20&quot;
-
-# 文章更新时间(可选)
-# 如果为空，将使用发布时间
-update_date = &quot;2017-10-19 22:04&quot;
-
-# 作者标识符(必填)
-# 参考 meta [[author]]
-author = &quot;pugo&quot;
-
-# 文章标签(可选)
-tags = [&quot;pugo&quot;]
-</code></pre>
-
-<h4 id="内容">内容</h4>
-
-<p>内容是第一次保存后的数据。 所有内容将被解析为<code>Markdown</code>内容。</p>
-<pre><code class="language-markdown">当您阅读本文时，表明`PuGo`已成功运行。
-
-此文章是从 `source/welcome.md` 生成的。 您可以学习它，并尝试编写自己的文章。
-
-...... (Markdown 内容)
-
-Markdown 是一种轻量级的标记语言，设计了纯文本格式化语法
-以便可以使用相同名称的工具将其转换为 HTML 和许多其他格式。
-
-Markdown 通常用于设置自述文件的格式，用于在线论坛上撰写邮件，
-并使用纯文本编辑器创建富文本。
-</code></pre>
-</div>
-                <div class="more">
-                    <a href="/2017/10/18/welcome.html" class="btn pure-button pure-button-primary">继续阅读..</a>
                 </div>
             </div>
             

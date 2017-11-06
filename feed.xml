@@ -4,7 +4,14 @@
     <link>http://blog.nocn.me/</link>
     <description>I love GoLang, blog based on Pugo build.</description>
     <managingEditor>xiliang_bing@outlook.com (夕凉)</managingEditor>
-    <pubDate>Mon, 06 Nov 2017 21:55:55 +0800</pubDate>
+    <pubDate>Mon, 06 Nov 2017 22:59:08 +0800</pubDate>
+    <item>
+      <title>git 出现：warning: LF will be replaced by CRLF 的解决办法</title>
+      <link>http://blog.nocn.me/2017/11/10/git-lf-crlf.html</link>
+      <description>&lt;h4 id=&#34;介绍&#34;&gt;介绍&lt;/h4&gt;&#xA;&#xA;&lt;p&gt;Windows 环境下使用 git add 的时候，有时会遇到 warning: “warning:LF will be replacee by CRLF” 提示。这是由于在 Windows 中的换行符为 CRLF，而在 Linux 中的换行符为 LF。在 git 创建的项目中换行符为 LF，而执行 git add 时，系统会提示 LF 将被转换为 CRLF。&lt;/p&gt;&#xA;&#xA;&lt;p&gt;这种问题的解决的办法很简单，在终端执行如下命令禁止 git 自动转换即可。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git config --global core.autocrlf false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;</description>
+      <author>夕凉</author>
+      <pubDate>Fri, 10 Nov 2017 17:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Git https、http 方式设置记住用户名及密码</title>
       <link>http://blog.nocn.me/2017/11/8/git-project.html</link>
