@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0">
+  <channel>
+    <title>Bing.Go</title>
+    <link>http://blog.nocn.me/</link>
+    <description>I love GoLang, blog based on Pugo build.</description>
+    <managingEditor>xiliang_bing@outlook.com (夕凉)</managingEditor>
+    <pubDate>Thu, 19 Oct 2017 23:39:05 +0800</pubDate>
+    <item>
+      <title>Hello Pugo!</title>
+      <link>http://blog.nocn.me/2017/10/18/welcome.html</link>
+      <description>&lt;h4 id=&#34;介绍&#34;&gt;介绍&lt;/h4&gt;&#xA;&#xA;&lt;p&gt;当您阅读本文时，表明&lt;code&gt;PuGo&lt;/code&gt;已成功运行。&lt;/p&gt;&#xA;&#xA;&lt;p&gt;此文章是从 &lt;code&gt;source/welcome.md&lt;/code&gt; 生成的。 您可以学习它，并尝试编写自己的文章。&lt;/p&gt;&#xA;&#xA;&lt;p&gt;文章的信息，如标题，作者等，都由&lt;code&gt;Markdown&lt;/code&gt;中的&lt;code&gt;toml&lt;/code&gt;代码块定义.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;# 文章标题(必填)&#xA;title = &amp;quot;Welcome&amp;quot;&#xA;&#xA;# 文章标签&#xA;# 用于建立永久链接(必填).&#xA;slug = &amp;quot;welcome&amp;quot;&#xA;&#xA;# 文章描述&#xA;# 显示在 HTML 头部的 meta 标签中.&#xA;desc = &amp;quot;welcome to try pugo site generator&amp;quot;&#xA;&#xA;# 文章发布时间&#xA;# 格式: 2015-11-28, 2015-11-28 12:28, 2015-11-28 12:28:38&#xA;date = &amp;quot;2017-10-18 22:20&amp;quot;&#xA;&#xA;# 文章更新时间(可选)&#xA;# 如果为空，将使用发布时间&#xA;update_date = &amp;quot;2017-10-19 22:04&amp;quot;&#xA;&#xA;# 作者标识符(必填)&#xA;# 参考 meta [[author]]&#xA;author = &amp;quot;pugo&amp;quot;&#xA;&#xA;# 文章标签(可选)&#xA;tags = [&amp;quot;pugo&amp;quot;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;h4 id=&#34;内容&#34;&gt;内容&lt;/h4&gt;&#xA;&#xA;&lt;p&gt;内容是第一次保存后的数据。 所有内容将被解析为&lt;code&gt;Markdown&lt;/code&gt;内容。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-markdown&#34;&gt;当您阅读本文时，表明`PuGo`已成功运行。&#xA;&#xA;此文章是从 `source/welcome.md` 生成的。 您可以学习它，并尝试编写自己的文章。&#xA;&#xA;...... (Markdown 内容)&#xA;&#xA;Markdown 是一种轻量级的标记语言，设计了纯文本格式化语法&#xA;以便可以使用相同名称的工具将其转换为 HTML 和许多其他格式。&#xA;&#xA;Markdown 通常用于设置自述文件的格式，用于在线论坛上撰写邮件，&#xA;并使用纯文本编辑器创建富文本。&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;</description>
+      <author>夕凉</author>
+      <pubDate>Wed, 18 Oct 2017 22:20:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>GoLang 闭包与匿名函数</title>
+      <link>http://blog.nocn.me/2017/10/18/golang-closure-func.html</link>
+      <description>&lt;h4 id=&#34;golang-匿名函数&#34;&gt;GoLang 匿名函数&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main&#xA;&#xA;import (&#xA;    &amp;quot;fmt&amp;quot;&#xA;    &amp;quot;reflect&amp;quot;&#xA;)&#xA;&#xA;func main() {&#xA;    // 匿名函数 1&#xA;    f := func(i, j int) (result int) {&#xA;        result = i + j&#xA;        return&#xA;    } // 创建匿名函数并返回函数指针(内存地址)&#xA;&#xA;    fmt.Println(f, f(1, 3))&#xA;    fmt.Println(reflect.TypeOf(f), reflect.TypeOf(f(1, 3)))&#xA;&#xA;    // 匿名函数 2&#xA;    func(i, j int) {&#xA;        fmt.Println(j, i)&#xA;    }(1, 9) // 创建匿名函数并执行(函数调用)&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;pre&gt;&lt;code&gt;0x4965b0 4&#xA;func(int, int) int int&#xA;9 1&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&#xA;&lt;h4 id=&#34;golang-闭包&#34;&gt;GoLang 闭包&lt;/h4&gt;&#xA;&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main&#xA;&#xA;import (&#xA;    &amp;quot;fmt&amp;quot;&#xA;)&#xA;&#xA;func adder() func(int) int {&#xA;    sum := 0&#xA;    return func(x int) int { // 返回一个函数类型(在Go中函数也是一种变量,可以作为值或类型. 它的类型就是所有拥有相同的参数，相同的返回值的一种类型.)&#xA;        sum += x&#xA;        return sum&#xA;    }&#xA;}&#xA;&#xA;func main() {&#xA;    pos, neg := adder(), adder()&#xA;    for i := 0; i &amp;lt; 10; i++ {&#xA;        fmt.Println(pos(i), neg(-2*i))&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;pre&gt;&lt;code&gt;0 0&#xA;1 -2&#xA;3 -6&#xA;6 -12&#xA;10 -20&#xA;15 -30&#xA;21 -42&#xA;28 -56&#xA;36 -72&#xA;45 -90&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;</description>
+      <author>夕凉</author>
+      <pubDate>Wed, 18 Oct 2017 00:37:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
