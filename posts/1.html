@@ -52,7 +52,7 @@
 <p>Windows 环境下使用 git add 的时候，有时会遇到 warning: “warning:LF will be replacee by CRLF” 提示。这是由于在 Windows 中的换行符为 CRLF，而在 Linux 中的换行符为 LF。在 git 创建的项目中换行符为 LF，而执行 git add 时，系统会提示 LF 将被转换为 CRLF。</p>
 
 <p>这种问题的解决的办法很简单，在命令行执行如下命令关闭 git 自动转换即可。</p>
-<pre><code class="language-shell">git config --global core.autocrlf true
+<pre><code class="language-sh">git config --global core.autocrlf true
 </code></pre>
 </div>
                 <div class="more">
@@ -68,19 +68,19 @@
                 <div class="post-description"><p>Git 使用 https、http 方式时，每次都要手动输入密码，按照如下方法设置后，只需输入一次密码，以后再不用承受手动输入密码的困扰。</p>
 
 <p>设置记住密码（默认15分钟）：</p>
-<pre><code class="language-shell">git config --global credential.helper cache
+<pre><code class="language-sh">git config --global credential.helper cache
 </code></pre>
 
 <p>自定义密码失效时间（一小时之后失效）：</p>
-<pre><code class="language-shell">git config credential.helper 'cache --timeout=3600'
+<pre><code class="language-sh">git config credential.helper 'cache --timeout=3600'
 </code></pre>
 
 <p>长期存储密码（推荐一）：</p>
-<pre><code class="language-shell">git config --global credential.helper store`
+<pre><code class="language-sh">git config --global credential.helper store`
 </code></pre>
 
 <p><strong>小提示：增加远程地址时加上用户名和密码也是可以的（推荐二）</strong></p>
-<pre><code class="language-shell">git remote add origin http://username:password@git.oschina.net/name/project.git 
+<pre><code class="language-sh">git remote add origin http://username:password@git.oschina.net/name/project.git 
 </code></pre>
 
 <p>补充：使用客户端也可以存储密码。</p>
@@ -97,23 +97,23 @@
                 </div>
                 <div class="post-description"><ul>
 <li><p>初始化一个版本库</p>
-<pre><code class="language-shell">git init
+<pre><code class="language-sh">git init
 </code></pre></li>
 
 <li><p>克隆远程版本库</p>
-<pre><code class="language-shell">git clone &lt;url&gt;
+<pre><code class="language-sh">git clone &lt;url&gt;
 </code></pre></li>
 
 <li><p>添加远程版本库</p>
-<pre><code class="language-shell">git remote add origin &lt;url&gt;
+<pre><code class="language-sh">git remote add origin &lt;url&gt;
 </code></pre></li>
 
 <li><p>查看远程仓库</p>
-<pre><code class="language-shell">git remote -v
+<pre><code class="language-sh">git remote -v
 </code></pre></li>
 
 <li><p>提交修改到暂存区，有三种模式可以选择（<strong>三选一</strong>）</p>
-<pre><code class="language-shell">// 提交所有变化
+<pre><code class="language-sh">// 提交所有变化
 git add -A
 // 提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)
 git add -u
@@ -122,63 +122,63 @@ git add .
 </code></pre></li>
 
 <li><p>提交修改</p>
-<pre><code class="language-shell">git commit -m &quot;提交说明&quot;
+<pre><code class="language-sh">git commit -m &quot;提交说明&quot;
 </code></pre></li>
 
 <li><p>推送到远程仓库</p>
-<pre><code class="language-shell">git push origin master
+<pre><code class="language-sh">git push origin master
 </code></pre></li>
 
 <li><p>查看文件状态</p>
-<pre><code class="language-shell">git status
+<pre><code class="language-sh">git status
 </code></pre></li>
 
 <li><p>跟踪指定文件</p>
-<pre><code class="language-shell">git add readme.txt
+<pre><code class="language-sh">git add readme.txt
 </code></pre></li>
 
 <li><p>从当前跟踪列表移除文件，并删除本地文件</p>
-<pre><code class="language-shell">git rm readme.txt
+<pre><code class="language-sh">git rm readme.txt
 </code></pre></li>
 
 <li><p>仅从暂存区删除，仍保留本地文件</p>
-<pre><code class="language-shell">git rm --cached readme.txt
+<pre><code class="language-sh">git rm --cached readme.txt
 </code></pre></li>
 
 <li><p>重命名文件</p>
-<pre><code class="language-shell">git mv reademe.txt readme.html
+<pre><code class="language-sh">git mv reademe.txt readme.html
 </code></pre></li>
 
 <li><p>查看提交历史</p>
-<pre><code class="language-shell">git log
+<pre><code class="language-sh">git log
 </code></pre></li>
 
 <li><p>修改最后一次提交的提交注释</p>
-<pre><code class="language-shell">git commit --amend
+<pre><code class="language-sh">git commit --amend
 </code></pre></li>
 
 <li><p>创建一个分支</p>
-<pre><code class="language-shell">git branch &lt;name&gt;
+<pre><code class="language-sh">git branch &lt;name&gt;
 </code></pre></li>
 
 <li><p>切换工作目录</p>
-<pre><code class="language-shell">git chekcout &lt;name&gt;
+<pre><code class="language-sh">git chekcout &lt;name&gt;
 </code></pre></li>
 
 <li><p>删除分支</p>
-<pre><code class="language-shell">git branch -d &lt;name&gt;
+<pre><code class="language-sh">git branch -d &lt;name&gt;
 </code></pre></li>
 
 <li><p>查看所有分支（有*号的为当前分支）</p>
-<pre><code class="language-shell">git branch
+<pre><code class="language-sh">git branch
 </code></pre></li>
 
 <li><p>查看远程仓库的信息</p>
-<pre><code class="language-shell">git remote show origin
+<pre><code class="language-sh">git remote show origin
 </code></pre></li>
 
 <li><p>强制掩盖远程分支</p>
-<pre><code class="language-shell"> git push origin &lt;name&gt; --force
+<pre><code class="language-sh"> git push origin &lt;name&gt; --force
 </code></pre></li>
 </ul>
 </div>

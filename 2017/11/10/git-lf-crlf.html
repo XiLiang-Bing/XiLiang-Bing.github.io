@@ -48,7 +48,7 @@
 <p>Windows 环境下使用 git add 的时候，有时会遇到 warning: “warning:LF will be replacee by CRLF” 提示。这是由于在 Windows 中的换行符为 CRLF，而在 Linux 中的换行符为 LF。在 git 创建的项目中换行符为 LF，而执行 git add 时，系统会提示 LF 将被转换为 CRLF。</p>
 
 <p>这种问题的解决的办法很简单，在命令行执行如下命令关闭 git 自动转换即可。</p>
-<pre><code class="language-shell">git config --global core.autocrlf true
+<pre><code class="language-sh">git config --global core.autocrlf true
 </code></pre>
 </div>
             </div>
