@@ -43,6 +43,211 @@
             </div>
             
             <div class="post">
+                <h3 class="post-header"><a href="/2017/11/8/git-project.html">Git https、http 方式设置记住用户名及密码</a></h3>
+                <div class="post-meta">
+                    <small>2017-11-8</small>
+                </div>
+                <div class="post-description"><p>Git 使用 https、http 方式时，每次都要手动输入密码，按照如下方法设置后，只需输入一次密码，以后再不用承受手动输入密码的困扰。</p>
+
+<p>设置记住密码（默认15分钟）：</p>
+<pre><code class="language-shell">git config --global credential.helper cache
+</code></pre>
+
+<p>自定义密码失效时间（一小时之后失效）：</p>
+<pre><code class="language-shell">git config credential.helper 'cache --timeout=3600'
+</code></pre>
+
+<p>长期存储密码（推荐一）：</p>
+<pre><code class="language-shell">git config --global credential.helper store`
+</code></pre>
+
+<p>** 小提示：增加远程地址时加上用户名和密码也是可以的（推荐二）**</p>
+<pre><code class="language-shell">git remote add origin http://username:password@git.oschina.net/name/project.git 
+</code></pre>
+
+<p>补充：使用客户端也可以存储密码。</p>
+</div>
+                <div class="more">
+                    <a href="/2017/11/8/git-project.html" class="btn pure-button pure-button-primary">继续阅读..</a>
+                </div>
+            </div>
+            
+            <div class="post">
+                <h3 class="post-header"><a href="/2017/11/7/git-command.html">Git 常用命令</a></h3>
+                <div class="post-meta">
+                    <small>2017-11-7</small>
+                </div>
+                <div class="post-description"><ul>
+<li><p>初始化一个版本库</p>
+<pre><code class="language-shell">git init
+</code></pre></li>
+
+<li><p>克隆远程版本库</p>
+<pre><code class="language-shell">git clone &lt;url&gt;
+</code></pre></li>
+
+<li><p>添加远程版本库</p>
+<pre><code class="language-shell">git remote add origin &lt;url&gt;
+</code></pre></li>
+
+<li><p>查看远程仓库</p>
+<pre><code class="language-shell">git remote -v
+</code></pre></li>
+
+<li><p>提交修改到暂存区，有三种模式可以选择（<strong>三选一</strong>）</p>
+<pre><code class="language-shell">// 提交所有变化
+git add -A
+// 提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)
+·  git add -u
+// 提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件
+git add .
+</code></pre></li>
+
+<li><p>提交修改</p>
+<pre><code class="language-shell">git commit -m &quot;提交说明&quot;
+</code></pre></li>
+
+<li><p>推送到远程仓库</p>
+<pre><code class="language-shell">git push origin master
+</code></pre></li>
+
+<li><p>查看文件状态</p>
+<pre><code class="language-shell">git status
+</code></pre></li>
+
+<li><p>跟踪指定文件</p>
+<pre><code class="language-shell">git add readme.txt
+</code></pre></li>
+
+<li><p>从当前跟踪列表移除文件，并删除本地文件</p>
+<pre><code class="language-shell">git rm readme.txt
+</code></pre></li>
+
+<li><p>仅从暂存区删除，仍保留本地文件</p>
+<pre><code class="language-shell">git rm -cached readme.txt
+</code></pre></li>
+
+<li><p>重命名文件</p>
+<pre><code class="language-shell">git mv reademe.txt readme.html
+</code></pre></li>
+
+<li><p>查看提交历史</p>
+<pre><code class="language-shell">git log
+</code></pre></li>
+
+<li><p>修改最后一次提交的提交注释</p>
+<pre><code class="language-shell">git commit --amend
+</code></pre></li>
+
+<li><p>创建一个分支</p>
+<pre><code class="language-shell">git branch &lt;name&gt;
+</code></pre></li>
+
+<li><p>切换工作目录</p>
+<pre><code class="language-shell">git chekcout &lt;name&gt;
+</code></pre></li>
+
+<li><p>删除分支</p>
+<pre><code class="language-shell">git branch -d &lt;name&gt;
+</code></pre></li>
+
+<li><p>查看所有分支（有*号的为当前分支）</p>
+<pre><code class="language-shell">git branch
+</code></pre></li>
+
+<li><p>查看远程仓库的信息</p>
+<pre><code class="language-shell">git remote show origin
+</code></pre></li>
+
+<li><p>强制掩盖远程分支</p>
+<pre><code class="language-shell"> git push origin &lt;name&gt; --force
+</code></pre></li>
+</ul>
+</div>
+                <div class="more">
+                    <a href="/2017/11/7/git-command.html" class="btn pure-button pure-button-primary">继续阅读..</a>
+                </div>
+            </div>
+            
+            <div class="post">
+                <h3 class="post-header"><a href="/2017/11/6/golang-recursive.html">GoLang 中的递归</a></h3>
+                <div class="post-meta">
+                    <small>2017-11-6</small>
+                </div>
+                <div class="post-description"><blockquote>
+<p>递归，就是在运行的过程中调用自身。</p>
+</blockquote>
+<pre><code class="language-go">func adder() {
+adder() // 调用函数自身
+}
+
+func main() {
+adder()
+}
+</code></pre>
+
+<p><strong>注意：GoLang支持递归。但使用递归时需要设置退出条件，否则会是一个死循环。</strong></p>
+
+<p>递归函数对于解决数学上的问题非常有用，例如计算阶乘，生成斐波那契数列等。</p>
+
+<h2 id="阶乘">阶乘</h2>
+
+<p>以下实例通过 Go 语言的递归函数实例阶乘：</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func Factorial(x int) (result int) {
+  if x == 0 {
+    result = 1
+  } else {
+    result = x * Factorial(x - 1)
+  }
+  return
+}
+
+func main() {  
+    var i int = 15
+    fmt.Println(i, &quot;的阶乘是&quot;, Factorial(i))
+}
+</code></pre>
+
+<p>输出结果如下：</p>
+<pre><code>15 的阶乘是 1307674368000
+</code></pre>
+
+<h2 id="斐波那契数列">斐波那契数列</h2>
+
+<p>以下实例通过 Go 语言的递归函数实现斐波那契数列：</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func fibonaci(n int) int {
+  if n &lt; 2 {
+   return n
+  }
+  return fibonaci(n-2) + fibonaci(n-1)
+}
+
+func main() {
+    var i int
+    for i = 0; i &lt; 10; i++ {
+       fmt.Println(fibonaci(i), &quot;\t&quot;)
+    }
+}
+</code></pre>
+
+<p>输出结果如下：</p>
+<pre><code>0        1        1        2        3        5        8        13        21        34
+</code></pre>
+</div>
+                <div class="more">
+                    <a href="/2017/11/6/golang-recursive.html" class="btn pure-button pure-button-primary">继续阅读..</a>
+                </div>
+            </div>
+            
+            <div class="post">
                 <h3 class="post-header"><a href="/2017/10/18/welcome.html">Hello Pugo!</a></h3>
                 <div class="post-meta">
                     <small>2017-10-18</small>
@@ -102,84 +307,11 @@ Markdown 通常用于设置自述文件的格式，用于在线论坛上撰写�
                 </div>
             </div>
             
-            <div class="post">
-                <h3 class="post-header"><a href="/2017/10/18/golang-closure-func.html">GoLang 闭包与匿名函数</a></h3>
-                <div class="post-meta">
-                    <small>2017-10-18</small>
-                </div>
-                <div class="post-description"><h4 id="golang-匿名函数">GoLang 匿名函数</h4>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;
-    &quot;reflect&quot;
-)
-
-func main() {
-    // 匿名函数 1
-    f := func(i, j int) (result int) {
-        result = i + j
-        return
-    } // 创建匿名函数并返回函数指针(内存地址)
-
-    fmt.Println(f, f(1, 3))
-    fmt.Println(reflect.TypeOf(f), reflect.TypeOf(f(1, 3)))
-
-    // 匿名函数 2
-    func(i, j int) {
-        fmt.Println(j, i)
-    }(1, 9) // 创建匿名函数并执行(函数调用)
-}
-</code></pre>
-<pre><code>0x4965b0 4
-func(int, int) int int
-9 1
-</code></pre>
-
-<h4 id="golang-闭包">GoLang 闭包</h4>
-<pre><code class="language-go">package main
-
-import (
-    &quot;fmt&quot;
-)
-
-func adder() func(int) int {
-    sum := 0
-    return func(x int) int { // 返回一个函数类型(在Go中函数也是一种变量,可以作为值或类型. 它的类型就是所有拥有相同的参数，相同的返回值的一种类型.)
-        sum += x
-        return sum
-    }
-}
-
-func main() {
-    pos, neg := adder(), adder()
-    for i := 0; i &lt; 10; i++ {
-        fmt.Println(pos(i), neg(-2*i))
-    }
-}
-</code></pre>
-<pre><code>0 0
-1 -2
-3 -6
-6 -12
-10 -20
-15 -30
-21 -42
-28 -56
-36 -72
-45 -90
-</code></pre>
-</div>
-                <div class="more">
-                    <a href="/2017/10/18/golang-closure-func.html" class="btn pure-button pure-button-primary">继续阅读..</a>
-                </div>
-            </div>
-            
         </div>
         <div class="pagination pure-g">
             <ul>
                 
-                
+                <li class="next pure-u-1-3"><a href="/posts/2.html">以前的 →</a></li>
             </ul>
         </div>
         <div class="footer">

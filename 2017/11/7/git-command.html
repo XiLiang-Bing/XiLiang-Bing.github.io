@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Git 常用命令 - Bing.Go</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="夕凉">
+    <meta name="keywords" content="pugo,golang,xiliang,夕凉,Bing.Go"/>
+    <meta name="description" content="Git 中常用命令的简单介绍,个人笔记."/>
+    <link href="/css/pure-min.css" type="text/css" rel="stylesheet" media="all">
+    <link href="/css/blog.css" type="text/css" rel="stylesheet" media="all">
+    <link href="/css/railscasts.css" type="text/css" rel="stylesheet" media="all"/>
+</head>
+<body class="post" data-perma="git-command">
+<div class="pure-g-r" id="layout">
+    <div class="sidebar pure-u">
+    <header class="header">
+        <hgroup>
+            <h1 class="brand-title">
+                <a href="/" class="brand-title">Bing.Go</a>
+            </h1>
+            <h2 class="brand-tagline">弹笑间观尽青天.</h2>
+        </hgroup>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="">
+                    <a href="/">文章</a>
+                </li>
+                <li class="">
+                    <a href="/archive">归档</a>
+                </li>
+                <li class="">
+                    <a href="/about">关于</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</div>
+    <div class="pure-u-1">
+        <div class="content">
+            <div class="post">
+                <h1 class="post-header">Git 常用命令</h1>
+                <div class="post-meta">
+                    <small>2017-11-7</small>
+                </div>
+                <div class="post-description"><ul>
+<li><p>初始化一个版本库</p>
+<pre><code class="language-shell">git init
+</code></pre></li>
+
+<li><p>克隆远程版本库</p>
+<pre><code class="language-shell">git clone &lt;url&gt;
+</code></pre></li>
+
+<li><p>添加远程版本库</p>
+<pre><code class="language-shell">git remote add origin &lt;url&gt;
+</code></pre></li>
+
+<li><p>查看远程仓库</p>
+<pre><code class="language-shell">git remote -v
+</code></pre></li>
+
+<li><p>提交修改到暂存区，有三种模式可以选择（<strong>三选一</strong>）</p>
+<pre><code class="language-shell">// 提交所有变化
+git add -A
+// 提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)
+·  git add -u
+// 提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件
+git add .
+</code></pre></li>
+
+<li><p>提交修改</p>
+<pre><code class="language-shell">git commit -m &quot;提交说明&quot;
+</code></pre></li>
+
+<li><p>推送到远程仓库</p>
+<pre><code class="language-shell">git push origin master
+</code></pre></li>
+
+<li><p>查看文件状态</p>
+<pre><code class="language-shell">git status
+</code></pre></li>
+
+<li><p>跟踪指定文件</p>
+<pre><code class="language-shell">git add readme.txt
+</code></pre></li>
+
+<li><p>从当前跟踪列表移除文件，并删除本地文件</p>
+<pre><code class="language-shell">git rm readme.txt
+</code></pre></li>
+
+<li><p>仅从暂存区删除，仍保留本地文件</p>
+<pre><code class="language-shell">git rm -cached readme.txt
+</code></pre></li>
+
+<li><p>重命名文件</p>
+<pre><code class="language-shell">git mv reademe.txt readme.html
+</code></pre></li>
+
+<li><p>查看提交历史</p>
+<pre><code class="language-shell">git log
+</code></pre></li>
+
+<li><p>修改最后一次提交的提交注释</p>
+<pre><code class="language-shell">git commit --amend
+</code></pre></li>
+
+<li><p>创建一个分支</p>
+<pre><code class="language-shell">git branch &lt;name&gt;
+</code></pre></li>
+
+<li><p>切换工作目录</p>
+<pre><code class="language-shell">git chekcout &lt;name&gt;
+</code></pre></li>
+
+<li><p>删除分支</p>
+<pre><code class="language-shell">git branch -d &lt;name&gt;
+</code></pre></li>
+
+<li><p>查看所有分支（有*号的为当前分支）</p>
+<pre><code class="language-shell">git branch
+</code></pre></li>
+
+<li><p>查看远程仓库的信息</p>
+<pre><code class="language-shell">git remote show origin
+</code></pre></li>
+
+<li><p>强制掩盖远程分支</p>
+<pre><code class="language-shell"> git push origin &lt;name&gt; --force
+</code></pre></li>
+</ul>
+</div>
+            </div>
+            
+<div id="comment">
+    
+    
+</div>
+
+        </div>
+        <div class="footer">
+    <p>&copy; Bing.Go 2015
+        powered by <a href="http://github.com/go-xiaohei/pugo">PuGo</a> with <a href="http://purecss.io" target="_blank">Pure</a>
+    </p>
+    
+    
+    
+
+</div>
+    </div>
+</div>
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/highlight.pack.js"></script>
+<script>
+    $(document).ready(function() {
+        $('pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
+    });
+</script>
+</body>
+</html>

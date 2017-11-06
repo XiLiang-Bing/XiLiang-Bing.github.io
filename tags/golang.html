@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>golang - Bing.Go</title>
+    <title>pugo - Bing.Go</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="夕凉">
     <meta name="keywords" content="pugo,golang,xiliang,夕凉,Bing.Go"/>
@@ -11,7 +11,7 @@
     <link href="/css/blog.css" type="text/css" rel="stylesheet" media="all">
     <link href="/css/railscasts.css" type="text/css" rel="stylesheet" media="all"/>
 </head>
-<body class="post-tag" data-perma="post-tag-golang">
+<body class="post-tag" data-perma="post-tag-pugo">
 <div class="pure-g-r" id="layout">
     <div class="sidebar pure-u">
     <header class="header">
@@ -42,6 +42,84 @@
                 <h1>所有文章</h1>
             </div>
             <h2>：golang</h2>
+            <div class="post">
+                <h3 class="post-header"><a href="/2017/11/6/golang-recursive.html">GoLang 中的递归</a></h3>
+                <div class="post-meta">
+                    <small>2017-11-6</small>
+                </div>
+                <div class="post-description"><blockquote>
+<p>递归，就是在运行的过程中调用自身。</p>
+</blockquote>
+<pre><code class="language-go">func adder() {
+adder() // 调用函数自身
+}
+
+func main() {
+adder()
+}
+</code></pre>
+
+<p><strong>注意：GoLang支持递归。但使用递归时需要设置退出条件，否则会是一个死循环。</strong></p>
+
+<p>递归函数对于解决数学上的问题非常有用，例如计算阶乘，生成斐波那契数列等。</p>
+
+<h2 id="阶乘">阶乘</h2>
+
+<p>以下实例通过 Go 语言的递归函数实例阶乘：</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func Factorial(x int) (result int) {
+  if x == 0 {
+    result = 1
+  } else {
+    result = x * Factorial(x - 1)
+  }
+  return
+}
+
+func main() {  
+    var i int = 15
+    fmt.Println(i, &quot;的阶乘是&quot;, Factorial(i))
+}
+</code></pre>
+
+<p>输出结果如下：</p>
+<pre><code>15 的阶乘是 1307674368000
+</code></pre>
+
+<h2 id="斐波那契数列">斐波那契数列</h2>
+
+<p>以下实例通过 Go 语言的递归函数实现斐波那契数列：</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func fibonaci(n int) int {
+  if n &lt; 2 {
+   return n
+  }
+  return fibonaci(n-2) + fibonaci(n-1)
+}
+
+func main() {
+    var i int
+    for i = 0; i &lt; 10; i++ {
+       fmt.Println(fibonaci(i), &quot;\t&quot;)
+    }
+}
+</code></pre>
+
+<p>输出结果如下：</p>
+<pre><code>0        1        1        2        3        5        8        13        21        34
+</code></pre>
+</div>
+                <div class="more">
+                    <a href="/2017/11/6/golang-recursive.html" class="btn pure-button pure-button-primary">继续阅读..</a>
+                </div>
+            </div>
+            
             <div class="post">
                 <h3 class="post-header"><a href="/2017/10/18/welcome.html">Hello Pugo!</a></h3>
                 <div class="post-meta">

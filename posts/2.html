@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>pugo - Bing.Go</title>
+    <title>Page 2 - Bing.Go</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="夕凉">
     <meta name="keywords" content="pugo,golang,xiliang,夕凉,Bing.Go"/>
@@ -11,7 +11,7 @@
     <link href="/css/blog.css" type="text/css" rel="stylesheet" media="all">
     <link href="/css/railscasts.css" type="text/css" rel="stylesheet" media="all"/>
 </head>
-<body class="post-tag" data-perma="post-tag-pugo">
+<body class="post-list" data-perma="post-page-2">
 <div class="pure-g-r" id="layout">
     <div class="sidebar pure-u">
     <header class="header">
@@ -41,71 +41,84 @@
             <div class="page-header">
                 <h1>所有文章</h1>
             </div>
-            <h2>：pugo</h2>
+            
             <div class="post">
-                <h3 class="post-header"><a href="/2017/10/18/welcome.html">Hello Pugo!</a></h3>
+                <h3 class="post-header"><a href="/2017/10/18/golang-closure-func.html">GoLang 闭包与匿名函数</a></h3>
                 <div class="post-meta">
                     <small>2017-10-18</small>
                 </div>
-                <div class="post-description"><h4 id="介绍">介绍</h4>
+                <div class="post-description"><h4 id="golang-匿名函数">GoLang 匿名函数</h4>
+<pre><code class="language-go">package main
 
-<p>当您阅读本文时，表明<code>PuGo</code>已成功运行。</p>
+import (
+    &quot;fmt&quot;
+    &quot;reflect&quot;
+)
 
-<p>此文章是从 <code>source/welcome.md</code> 生成的。 您可以学习它，并尝试编写自己的文章。</p>
+func main() {
+    // 匿名函数 1
+    f := func(i, j int) (result int) {
+        result = i + j
+        return
+    } // 创建匿名函数并返回函数指针(内存地址)
 
-<p>文章的信息，如标题，作者等，都由<code>Markdown</code>中的<code>toml</code>代码块定义.</p>
-<pre><code class="language-toml"># 文章标题(必填)
-title = &quot;Welcome&quot;
+    fmt.Println(f, f(1, 3))
+    fmt.Println(reflect.TypeOf(f), reflect.TypeOf(f(1, 3)))
 
-# 文章标签
-# 用于建立永久链接(必填).
-slug = &quot;welcome&quot;
-
-# 文章描述
-# 显示在 HTML 头部的 meta 标签中.
-desc = &quot;welcome to try pugo site generator&quot;
-
-# 文章发布时间
-# 格式: 2015-11-28, 2015-11-28 12:28, 2015-11-28 12:28:38
-date = &quot;2017-10-18 22:20&quot;
-
-# 文章更新时间(可选)
-# 如果为空，将使用发布时间
-update_date = &quot;2017-10-19 22:04&quot;
-
-# 作者标识符(必填)
-# 参考 meta [[author]]
-author = &quot;pugo&quot;
-
-# 文章标签(可选)
-tags = [&quot;pugo&quot;]
+    // 匿名函数 2
+    func(i, j int) {
+        fmt.Println(j, i)
+    }(1, 9) // 创建匿名函数并执行(函数调用)
+}
+</code></pre>
+<pre><code>0x4965b0 4
+func(int, int) int int
+9 1
 </code></pre>
 
-<h4 id="内容">内容</h4>
+<h4 id="golang-闭包">GoLang 闭包</h4>
+<pre><code class="language-go">package main
 
-<p>内容是第一次保存后的数据。 所有内容将被解析为<code>Markdown</code>内容。</p>
-<pre><code class="language-markdown">当您阅读本文时，表明`PuGo`已成功运行。
+import (
+    &quot;fmt&quot;
+)
 
-此文章是从 `source/welcome.md` 生成的。 您可以学习它，并尝试编写自己的文章。
+func adder() func(int) int {
+    sum := 0
+    return func(x int) int { // 返回一个函数类型(在Go中函数也是一种变量,可以作为值或类型. 它的类型就是所有拥有相同的参数，相同的返回值的一种类型.)
+        sum += x
+        return sum
+    }
+}
 
-...... (Markdown 内容)
-
-Markdown 是一种轻量级的标记语言，设计了纯文本格式化语法
-以便可以使用相同名称的工具将其转换为 HTML 和许多其他格式。
-
-Markdown 通常用于设置自述文件的格式，用于在线论坛上撰写邮件，
-并使用纯文本编辑器创建富文本。
+func main() {
+    pos, neg := adder(), adder()
+    for i := 0; i &lt; 10; i++ {
+        fmt.Println(pos(i), neg(-2*i))
+    }
+}
+</code></pre>
+<pre><code>0 0
+1 -2
+3 -6
+6 -12
+10 -20
+15 -30
+21 -42
+28 -56
+36 -72
+45 -90
 </code></pre>
 </div>
                 <div class="more">
-                    <a href="/2017/10/18/welcome.html" class="btn pure-button pure-button-primary">继续阅读..</a>
+                    <a href="/2017/10/18/golang-closure-func.html" class="btn pure-button pure-button-primary">继续阅读..</a>
                 </div>
             </div>
             
         </div>
         <div class="pagination pure-g">
             <ul>
-                
+                <li class="prev pure-u-1-3"><a href="/posts/1.html">← 更新的</a></li>
                 
             </ul>
         </div>
